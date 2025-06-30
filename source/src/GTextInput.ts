@@ -28,6 +28,15 @@ export class GTextInput extends GTextField {
         this.autoSize = AutoSizeType.None;
     }
 
+     public get stroke(): number {
+        return (this._outline && this._outline.enabled) ? this._outline.width : 0;
+    }
+
+    /**描边: 覆盖下子类方法,不然会多一个label组件*/
+    public set stroke(value: number) {
+       //应该屏蔽此方法,否则会造成改控件多一个 Lable组件
+    }
+
     public set editable(val: boolean) {
         this._editBox.enabled = val;
     }
