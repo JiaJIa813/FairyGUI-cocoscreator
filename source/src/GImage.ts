@@ -118,4 +118,15 @@ export class GImage extends GObject {
             this._content.fillAmount = buffer.readFloat();
         }
     }
+
+     /**新增  onEnable 实现,不然再次打开的时候有问题*/
+    public onEnable(){
+        if (this.packageItem != null) {
+            var contentItem = this.packageItem.getBranch();
+            if (contentItem != null) {
+                contentItem.load();
+                this._content.spriteFrame = <SpriteFrame>contentItem.asset;
+            }
+        }
+    }
 }
