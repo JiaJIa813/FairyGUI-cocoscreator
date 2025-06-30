@@ -89,6 +89,21 @@ namespace fgui {
             }
         }
 
+        public get stroke(): number {
+		return (this._outline && this._outline.enabled) ? this._outline.width : 0;
+	}
+
+    //描边
+    private _stroke: number;
+        
+    /**描边: 这个组件应该通过 html富文本格式来挂载[通过richText的规则实现]
+    * 覆盖父类的方法, 否则描边会导致异常,被自动创建一个label的问题.
+    */
+	public set stroke(value: number) {
+        this._stroke = value;
+	}
+
+
         protected markSizeChanged(): void {
             //RichText貌似没有延迟重建文本，所以这里不需要
         }
