@@ -273,7 +273,12 @@ export class ScrollPane extends Component {
                 return this._owner;
         }
 
-        return null;
+         //处理list 点击问题
+        if (pt.x >= this._owner.margin.left && pt.y >= this._owner.margin.top
+            && pt.x < this._owner.margin.left + this._viewSize.x && pt.y < this._owner.margin.top + this._viewSize.y)
+            return this._owner;
+        else
+            return null;
     }
 
     public get owner(): GComponent {
